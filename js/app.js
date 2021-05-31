@@ -12,14 +12,23 @@ let avatarBimage = document.querySelector(".person-b-image");
 const starRepo = document.querySelector("#star-repo");
 const followers = document.querySelector("#followers");
 const following = document.querySelector("#following");
+let usernameInput = document.querySelector('#owner-input')
+let formInput = document.querySelector('#git-input')
+
+const url = new URL(window.location.href);
+
+const username = url.searchParams.get('username');
+
+console.log(username);
 
 
-const getReposQuery = ` query { user(login: "odomfavour") { name login bio avatarUrl email followers{ totalCount } following { totalCount } starredRepositories{ totalCount } repositories(first:20) { totalCount edges {node { name description updatedAt openGraphImageUrl primaryLanguage{ name} parent { name owner { login }}}  } } } }`;
+const getReposQuery = ` query($login: String!) { user(login: $login) { name login bio avatarUrl email followers{ totalCount } following { totalCount } starredRepositories{ totalCount } repositories(first:20) { totalCount edges {node { name description updatedAt openGraphImageUrl primaryLanguage{ name} parent { name owner { login }}}  } } } }`;
 
-const auth = {
+  const auth = {
   headers: {
     authorization: "token " + sum,
   },
+  login: username
 };
 
 // async function makeRequest(getReposQuery, auth) {
@@ -143,7 +152,6 @@ niceRequest(getReposQuery, auth)
     // console.log(res.user.repositories.edges);
   })
   .catch((err) => console.log(err));
-
 /**
  * Gets a datetime, extracts the date section and formats it in a human-readable way
  * @param {string|number} _date The datetime to be formatted
