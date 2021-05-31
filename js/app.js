@@ -13,13 +13,17 @@ const starRepo = document.querySelector("#star-repo");
 const followers = document.querySelector("#followers");
 const following = document.querySelector("#following");
 let usernameInput = document.querySelector('#owner-input')
-let formInput = document.querySelector('#git-input')
+let backBtn = document.querySelector('#back-btn')
+
+
+
+
 
 const url = new URL(window.location.href);
 
 const username = url.searchParams.get('username');
 
-console.log(username);
+// console.log(username);
 
 
 const getReposQuery = ` query($login: String!) { user(login: $login) { name login bio avatarUrl email followers{ totalCount } following { totalCount } starredRepositories{ totalCount } repositories(first:20) { totalCount edges {node { name description updatedAt openGraphImageUrl primaryLanguage{ name} parent { name owner { login }}}  } } } }`;
@@ -31,6 +35,13 @@ const getReposQuery = ` query($login: String!) { user(login: $login) { name logi
   login: username
 };
 
+if(window.location.href.includes('user.html')) {
+  backBtn.addEventListener('click', goBack)
+}
+
+function goBack() {
+  window.history.back();
+}
 // async function makeRequest(getReposQuery, auth) {
 //     return await graphql(getReposQuery, auth)
 // }
@@ -152,6 +163,9 @@ niceRequest(getReposQuery, auth)
     // console.log(res.user.repositories.edges);
   })
   .catch((err) => console.log(err));
+
+
+  
 /**
  * Gets a datetime, extracts the date section and formats it in a human-readable way
  * @param {string|number} _date The datetime to be formatted

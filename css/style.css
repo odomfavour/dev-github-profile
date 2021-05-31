@@ -117,6 +117,10 @@ header .hidden-burger {
   color: #fff;
 }
 
+.p-8 {
+  padding: 20px;
+}
+
 .top-search .last-input {
   margin-right: 8px;
 }
@@ -242,9 +246,21 @@ header .hidden-burger {
   border-bottom: 1px solid #e1e4e8;
 }
 
+.p-8 .btn {
+  text-decoration: none;
+  border: 1px solid #ccc;
+  padding: 5px 16px;
+  font-size: 14px;
+  font-weight: 500;
+  border-color: rgba(27, 31, 35, 0.15);
+  border-radius: 6px;
+  cursor: pointer;
+  background: #fafbfc;
+}
+
 .top-filter button,
 .repo-box button,
-button {
+button, .btn {
   padding: 5px 16px;
   font-size: 14px;
   font-weight: 500;
@@ -387,6 +403,9 @@ button {
 }
 
 @media (max-width: 768px) {
+  .input-section {
+    width: 100% !important;
+  }
   .header-link {
     margin-right: 0;
   }
@@ -476,6 +495,10 @@ button {
 }
 
 @media (max-width: 1024px) and (min-width: 769px) {
+  .input-section {
+    width: 100%;
+  }
+
   .image-box .big-img {
     width: 200px !important;
     height: 200px;
