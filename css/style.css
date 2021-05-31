@@ -404,7 +404,7 @@ button, .btn {
 
 @media (max-width: 768px) {
   .input-section {
-    width: 100% !important;
+    width: 90% !important;
   }
   .header-link {
     margin-right: 0;

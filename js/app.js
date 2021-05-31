@@ -23,8 +23,6 @@ const url = new URL(window.location.href);
 
 const username = url.searchParams.get('username');
 
-// console.log(username);
-
 
 const getReposQuery = ` query($login: String!) { user(login: $login) { name login bio avatarUrl email followers{ totalCount } following { totalCount } starredRepositories{ totalCount } repositories(first:20) { totalCount edges {node { name description updatedAt openGraphImageUrl primaryLanguage{ name} parent { name owner { login }}}  } } } }`;
 
@@ -42,16 +40,11 @@ if(window.location.href.includes('user.html')) {
 function goBack() {
   window.history.back();
 }
-// async function makeRequest(getReposQuery, auth) {
-//     return await graphql(getReposQuery, auth)
-// }
-// You can use ES6 syntax to make it semantic and in one-line!
+
 const niceRequest = (q, a) => graphql(q, a);
 
 /* STEP 4: USE THE FUNCTION */
-// This will resolve the promise and print it to console.
-// You can expand the objects and subobjects to see data.
-console.log(niceRequest(getReposQuery, auth));
+
 niceRequest(getReposQuery, auth)
   .then((res) => {
     fullName.textContent = res.user.name;
@@ -156,15 +149,14 @@ niceRequest(getReposQuery, auth)
   </li>
 
     `;
-      // console.log(e);
     });
 
     repoLayout.innerHTML = html;
-    // console.log(res.user.repositories.edges);
   })
   .catch((err) => console.log(err));
 
 
+  // helper function 
   
 /**
  * Gets a datetime, extracts the date section and formats it in a human-readable way
