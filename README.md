@@ -8,4 +8,4 @@ My GitHub profile built with HTML, CSS, vanilla JavaScript and graphql
 
 ### Link to my hosted site is below. Click on the link below
 
-[Ogochukwu-github-profile](https://odomfavour.github.io/dev-github-profile)
+[github-profile-search](https://odomfavour.github.io/dev-github-profile)
